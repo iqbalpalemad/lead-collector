@@ -24,7 +24,7 @@ A simple Express backend API with signup, login, and JWT authentication.
 - This demo uses in-memory user storage. Use a database for production.
 
 
-# Pathemari Backend API Documentation
+# Backend API Documentation
 
 All API responses follow this structure:
 ```json
