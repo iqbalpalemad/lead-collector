@@ -50,7 +50,7 @@ exports.updateLead = async (req, res) => {
     if (name !== undefined) update.name = name;
     if (phone !== undefined) update.phone = phone;
     update.assignedTo = userId;
-    const lead = await Lead.findByIdAndUpdate(
+    let lead = await Lead.findByIdAndUpdate(
       id,
       update,
       { new: true }
@@ -60,6 +60,7 @@ exports.updateLead = async (req, res) => {
       data: null,
       error: 'Lead not found'
     });
+    lead = await lead.populate('assignedTo', 'username');
     res.json({
       result: true,
       data: lead

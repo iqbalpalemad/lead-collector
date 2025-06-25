@@ -29,7 +29,7 @@ exports.createCamp = async (req, res) => {
 
 exports.listCamps = async (req, res) => {
   try {
-    const camps = await Camp.find({}, { name: 1 }).sort({ createdAt: -1 });
+    const camps = await Camp.find({}, { name: 1, date: 1 }).sort({ createdAt: -1 });
     res.json({
       result: true,
       data: camps
