@@ -127,7 +127,7 @@ Authorization: Bearer <token>
 - **Body:**
 ```json
 {
-  "name": "string",
+  "name": "string (optional)",
   "phone": "string",
   "camp": "camp_id",
   "note": "string (optional)"
