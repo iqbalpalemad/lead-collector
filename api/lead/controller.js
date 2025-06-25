@@ -20,6 +20,15 @@ exports.createLead = async (req, res) => {
       data: null,
       error: 'Camp not found'
     });
+    // Prevent duplicate phone numbers
+    const existingLead = await Lead.findOne({ phone });
+    if (existingLead) {
+      return res.status(409).json({
+        result: false,
+        data: null,
+        error: 'A lead with this phone number already exists.'
+      });
+    }
     // Status is always 'new', assignedTo is null
     const lead = new Lead({ name, phone, camp, note, status: 'new', assignedTo: null, createdBy: userId, updatedBy: userId });
     await lead.save();
@@ -48,7 +57,18 @@ exports.updateLead = async (req, res) => {
     if (status) update.status = status;
     if (note !== undefined) update.note = note;
     if (name !== undefined) update.name = name;
-    if (phone !== undefined) update.phone = phone;
+    if (phone !== undefined) {
+      // Prevent duplicate phone numbers on update (ignore current lead)
+      const duplicate = await Lead.findOne({ phone, _id: { $ne: id } });
+      if (duplicate) {
+        return res.status(409).json({
+          result: false,
+          data: null,
+          error: 'A lead with this phone number already exists.'
+        });
+      }
+      update.phone = phone;
+    }
     update.assignedTo = userId;
     let lead = await Lead.findByIdAndUpdate(
       id,
