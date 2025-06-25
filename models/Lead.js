@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const LEAD_STATUS_VALUES = ['new', 'pending', 'waiting for payment', 'confirmed', 'cancelled'];
 
 const LeadSchema = new mongoose.Schema({
-  name: { type: String, required: true },
+  name: { type: String, required: false },
   phone: { type: String, required: true },
   status: { type: String, enum: LEAD_STATUS_VALUES, default: 'new', required: true },
   camp: { type: mongoose.Schema.Types.ObjectId, ref: 'Camp', required: true },

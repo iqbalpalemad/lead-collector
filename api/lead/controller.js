@@ -4,11 +4,11 @@ const Camp = require('../../models/Camp');
 exports.createLead = async (req, res) => {
   try {
     const { name, phone, camp, note } = req.body;
-    if (!name || !phone || !camp) {
+    if (!phone || !camp) {
       return res.status(400).json({
         result: false,
         data: null,
-        error: 'name, phone, and camp are required'
+        error: 'phone and camp are required'
       });
     }
     const userId = req.user && req.user.id;
