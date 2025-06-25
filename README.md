@@ -175,6 +175,23 @@ Authorization: Bearer <token>
 
 ---
 
+## User APIs
+
+### List Users
+- **GET** `/api/user`
+- **Headers:** `Authorization: Bearer <token>`
+- **Response:**
+```json
+{
+  "result": true,
+  "data": [
+    { "_id": "<user_id>", "username": "<username>" }
+  ]
+}
+```
+
+---
+
 ## Error Response Example
 ```json
 {
