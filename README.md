@@ -77,7 +77,10 @@ Authorization: Bearer <token>
 ```json
 {
   "result": true,
-  "data": { "token": "<JWT_TOKEN>" }
+  "data": {
+    "token": "<JWT_TOKEN>",
+    "name": "<username>"
+  }
 }
 ```
 
