@@ -48,7 +48,7 @@ const { STATUS_VALUES } = require('../../models/Lead');
 exports.updateLead = async (req, res) => {
   try {
     const { id } = req.params;
-    const { status, note, name, phone } = req.body;
+    const { status, note, name, phone, countryCode } = req.body;
     const userId = req.user && req.user.id;
     if (!userId) return res.status(401).json({ message: 'Unauthorized' });
     // Only allow valid statuses
