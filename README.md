@@ -129,10 +129,12 @@ Authorization: Bearer <token>
 {
   "name": "string (optional)",
   "phone": "string",
+  "countryCode": "string (optional, defaults to '+91')",
   "camp": "camp_id",
   "note": "string (optional)"
 }
 ```
+- **Note:** The combination of `phone` and `countryCode` must be unique among all leads. If `countryCode` is not provided, it defaults to '+91'.
 - **Response:**
 ```json
 {

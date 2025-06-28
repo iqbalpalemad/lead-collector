@@ -5,6 +5,7 @@ const LEAD_STATUS_VALUES = ['new', 'pending', 'waiting for payment', 'confirmed'
 const LeadSchema = new mongoose.Schema({
   name: { type: String, required: false },
   phone: { type: String, required: true },
+  countryCode: { type: String, required: false, default: '+91' },
   status: { type: String, enum: LEAD_STATUS_VALUES, default: 'new', required: true },
   camp: { type: mongoose.Schema.Types.ObjectId, ref: 'Camp', required: true },
   assignedTo: { type: mongoose.Schema.Types.ObjectId, ref: 'User', default: null },
